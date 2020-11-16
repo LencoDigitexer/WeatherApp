@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvHumidity;
     TextView tvWindSpeed;
     TextView tvWindDeg;
+    TextView tvRain1h;
+    TextView tvRain3h;
 
     ImageView ivImage;
     EditText etSearch;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         tvHumidity = (TextView)findViewById(R.id.tvHumidity);
         tvWindSpeed = (TextView)findViewById(R.id.tvWindSpeed);
         tvWindDeg = (TextView)findViewById(R.id.tvWindDeg);
+        tvRain1h = (TextView)findViewById(R.id.tvRain1h);
+        tvRain3h = (TextView)findViewById(R.id.tvRain3h);
 
         ivImage = (ImageView)findViewById(R.id.ivIcon);
         etSearch = findViewById(R.id.etSearch);
@@ -108,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
                                 Double wind_speed = wind.getDouble("speed");
                                 Double wind_deg = wind.getDouble("deg");
 
+                                JSONObject rain_in_h = json.getJSONObject("rain");
+                                Double rain1h = rain_in_h.getDouble("1h");
+                                //Double rain3h = rain_in_h.getDouble("3h");
+
                                 setText(tvTown, City);
                                 String temps = Temperature + " °C";
                                 setText(tvTemp, temps);
@@ -115,10 +123,12 @@ public class MainActivity extends AppCompatActivity {
                                 setText(tvFeel, feels_like + " °C");
                                 setText(tvMin, temp_min + " °C");
                                 setText(tvMax, temp_max + " °C");
-                                setText(tvPressure, pressure + " мм рт. ст.");
+                                setText(tvPressure, pressure + " гПа");
                                 setText(tvHumidity, humidity + " %");
                                 setText(tvWindSpeed, wind_speed + " м/c");
                                 setText(tvWindDeg, wind_deg + " °");
+                                setText(tvRain1h, rain1h + " мм");
+                                //setText(tvRain3h, rain3h + " мм");
 
                                 setImage(ivImage, icons);
 
