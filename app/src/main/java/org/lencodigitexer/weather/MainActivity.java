@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvMax;
     TextView tvPressure;
     TextView tvHumidity;
+    TextView tvWindSpeed;
+    TextView tvWindDeg;
 
     ImageView ivImage;
     EditText etSearch;
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         tvMax = (TextView)findViewById(R.id.tvMax);
         tvPressure = (TextView)findViewById(R.id.tvPressure);
         tvHumidity = (TextView)findViewById(R.id.tvHumidity);
+        tvWindSpeed = (TextView)findViewById(R.id.tvWindSpeed);
+        tvWindDeg = (TextView)findViewById(R.id.tvWindDeg);
 
         ivImage = (ImageView)findViewById(R.id.ivIcon);
         etSearch = findViewById(R.id.etSearch);
@@ -100,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
                                 Integer pressure = temp1.getInt("pressure");
                                 Integer humidity = temp1.getInt("humidity");
 
+                                JSONObject wind = json.getJSONObject("wind");
+                                Double wind_speed = wind.getDouble("speed");
+                                Double wind_deg = wind.getDouble("deg");
+
                                 setText(tvTown, City);
                                 String temps = Temperature + " °C";
                                 setText(tvTemp, temps);
@@ -109,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
                                 setText(tvMax, temp_max + " °C");
                                 setText(tvPressure, pressure + " мм рт. ст.");
                                 setText(tvHumidity, humidity + " %");
-
+                                setText(tvWindSpeed, wind_speed + " м/c");
+                                setText(tvWindDeg, wind_deg + " °");
 
                                 setImage(ivImage, icons);
 
