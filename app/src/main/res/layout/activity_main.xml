@@ -80,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:text="Moscow"
                 android:textColor="@color/black" />
 
             <ImageView
@@ -106,4 +105,5 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
