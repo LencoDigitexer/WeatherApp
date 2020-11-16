@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -32,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTown;
     TextView tvTemp;
     TextView tvDesc;
+    TextView tvFeel;
+    TextView tvMin;
+    TextView tvMax;
+    TextView tvPressure;
+    TextView tvHumidity;
 
     ImageView ivImage;
     EditText etSearch;
@@ -47,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         tvTown = (TextView)findViewById(R.id.tvTown);
         tvTemp = (TextView)findViewById(R.id.tvTerm);
         tvDesc = (TextView)findViewById(R.id.tvDesc);
+        tvFeel = (TextView)findViewById(R.id.tvFeel);
+        tvMin = (TextView)findViewById(R.id.tvMin);
+        tvMax = (TextView)findViewById(R.id.tvMax);
+        tvPressure = (TextView)findViewById(R.id.tvPressure);
+        tvHumidity = (TextView)findViewById(R.id.tvHumidity);
 
         ivImage = (ImageView)findViewById(R.id.ivIcon);
         etSearch = findViewById(R.id.etSearch);
@@ -83,11 +94,22 @@ public class MainActivity extends AppCompatActivity {
 
                                 JSONObject temp1 = json.getJSONObject("main");
                                 Double Temperature = temp1.getDouble("temp");
+                                Double feels_like = temp1.getDouble("feels_like");
+                                Double temp_min = temp1.getDouble("temp_min");
+                                Double temp_max = temp1.getDouble("temp_max");
+                                Integer pressure = temp1.getInt("pressure");
+                                Integer humidity = temp1.getInt("humidity");
 
                                 setText(tvTown, City);
-                                String temps = (Math.round(Temperature) + " °C");
+                                String temps = Temperature + " °C";
                                 setText(tvTemp, temps);
                                 setText(tvDesc, description);
+                                setText(tvFeel, feels_like + " °C");
+                                setText(tvMin, temp_min + " °C");
+                                setText(tvMax, temp_max + " °C");
+                                setText(tvPressure, pressure + " мм рт. ст.");
+                                setText(tvHumidity, humidity + " %");
+
 
                                 setImage(ivImage, icons);
 
